@@ -4,9 +4,12 @@ var i;
 
 function preload(){
   //loadImage de path (camino)
-  path= loadImage ("path.png");
+  
+  //Luci debes usar las variables de pathImg y boyImg para guardar las imágenes: 
+  // Debes borrar los espacios entre el nombre de la función y los paréntesis así: 
+  pathImg= loadImage("path.png");
   //loadAnimation de boy (niño)
-  boy=loadAnimation ("Jake1.png","Jake2.png","jake3.png","jake4.PNG","jake5.png");
+  boyImg=loadAnimation("Jake1.png","Jake2.png","jake3.png","jake4.PNG","jake5.png");
  
 }
 
@@ -17,7 +20,7 @@ function setup(){
  path=createSprite(300,300,400,400 );
  
 //agregar imagen de path
-   path.addImage("pathImage", path);
+ path.addImage("pathImage", pathImg);
 //Hacer que la pista sea un fondo en movimiento al darle velocidad Y.
 path.velocityY=4;
 path.scale=1.2;
@@ -25,7 +28,7 @@ path.scale=1.2;
 //crear sprite de boy (niño)
 boy=createSprite()
 //agregar animación para boy
-boy.addAnimation("running", boy);
+boy.addAnimation("running", boyImg);
 boy.scale=0.08;
   
 // crear  left Boundary (límite izquierdo)
@@ -42,9 +45,10 @@ function draw() {
   background(0);
   path.velocityY = 4;
   
-  // boy moviéndose en el eje X con el mouse
+  // boy moviéndose en el eje X con el mouse  
   boy.x=mouseX;
-  boy.y=mouseY;
+  //Solo debes mover el niño en el eje X
+  //boy.y=mouseY;
   edges= createEdgeSprites();
   boy.collide(edges[3]);
   // colisión de boy con los límites derecho e izquierdo invisibles 
